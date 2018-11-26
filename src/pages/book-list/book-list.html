@@ -6,5 +6,11 @@
 
 
 <ion-content padding>
-  <p>Ceci contiendra la liste de livres</p>
+  <ion-list>
+    <button ion-item icon-start
+            *ngFor="let book of booksList">
+      <ion-icon name="book"></ion-icon>
+      {{ book.title }}
+    </button>
+  </ion-list>
 </ion-content>

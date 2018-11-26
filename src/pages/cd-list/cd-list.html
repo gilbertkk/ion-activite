@@ -6,5 +6,11 @@
 
 
 <ion-content padding>
-  <p>Ceci contriendra la liste des CDs</p>
+  <ion-list>
+    <button ion-item icon-start
+            *ngFor="let cd of cdsList">
+      <ion-icon name="disc"></ion-icon>
+      {{ cd.album }}
+    </button>
+  </ion-list>
 </ion-content>
