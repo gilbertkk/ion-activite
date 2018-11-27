@@ -9,16 +9,22 @@ import { DataService } from '../../../services/data.service';
 })
 export class LendCdPage implements OnInit {
   cd: Cd;
+  index: number;
+
   constructor(public navParams: NavParams,
               private dataService: DataService,
               public viewCtrl: ViewController) {}
 
   ngOnInit() {
-    let index = this.navParams.get('index');
-    this.cd = this.dataService.cdsList[index];
+    this.index = this.navParams.get('index');
+    this.cd = this.dataService.cdsList[this.index];
   }
 
   dismissModal() {
     this.viewCtrl.dismiss();
+  }
+
+  onToggleLendCd() {
+    this.cd.isLend = !this.cd.isLend;
   }
 }

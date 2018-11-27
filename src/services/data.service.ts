@@ -32,4 +32,12 @@ export class DataService {
             isLend: true
         }
     ];
+
+    toggleLendBook(index: number) {
+        this.booksList[index].isLend = !this.booksList[index].isLend;
+    }
+
+    toggleLendCd(index: number) {
+        this.cdsList[index].isLend = !this.cdsList[index].isLend;
+    }
 }

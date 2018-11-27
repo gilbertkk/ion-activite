@@ -19,14 +19,16 @@
         <ion-col>
           <button ion-button full 
                   color="primary"
-                  [disabled]="book.isLend">
+                  [disabled]="book.isLend"
+                  (click)="onToggleLendBook()">
             Prêter
           </button>
         </ion-col>
         <ion-col>
           <button ion-button full
                   color="secondary" 
-                  [disabled]="!book.isLend">
+                  [disabled]="!book.isLend"
+                  (click)="onToggleLendBook()">
             Rendre
           </button>
         </ion-col>

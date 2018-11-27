@@ -10,17 +10,22 @@ import { Book } from '../../../models/book';
 })
 export class LendBookPage implements OnInit {
   book: Book;
+  index: number;
 
   constructor(public navParams: NavParams,
               private dataService: DataService,
               public viewCtrl: ViewController) {}
 
   ngOnInit() {
-    let index = this.navParams.get('index');
-    this.book = this.dataService.booksList[index];
+     this.index = this.navParams.get('index');
+    this.book = this.dataService.booksList[this.index];
   }
 
   dismissModal() {
     this.viewCtrl.dismiss();
+  }
+
+  onToggleLendBook() {
+    this.book.isLend = !this.book.isLend;
   }
 }
