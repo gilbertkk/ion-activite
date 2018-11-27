@@ -25,6 +25,7 @@ export class LendCdPage implements OnInit {
   }
 
   onToggleLendCd() {
-    this.cd.isLend = !this.cd.isLend;
+    this.dataService.toggleLendCd(this.index);
+    this.cd.isLend = this.dataService.cdsList[this.index].isLend;
   }
 }

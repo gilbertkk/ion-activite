@@ -26,6 +26,7 @@ export class LendBookPage implements OnInit {
   }
 
   onToggleLendBook() {
-    this.book.isLend = !this.book.isLend;
+    this.dataService.toggleLendBook(this.index);
+    this.book.isLend = this.dataService.booksList[this.index].isLend;
   }
 }
