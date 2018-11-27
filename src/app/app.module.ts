@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { DataService } from '../services/data.service';
 import { LendBookPage } from '../pages/book-list/lend-book/lend-book';
 import { LendCdPage } from '../pages/cd-list/lend-cd/lend-cd';
+import { SettingsPage } from '../pages/settings/settings';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LendCdPage } from '../pages/cd-list/lend-cd/lend-cd';
     CdListPage,
     TabsPage,
     LendBookPage,
-    LendCdPage
+    LendCdPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { LendCdPage } from '../pages/cd-list/lend-cd/lend-cd';
     CdListPage,
     TabsPage,
     LendBookPage,
-    LendCdPage
+    LendCdPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,

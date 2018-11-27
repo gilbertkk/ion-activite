@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, MenuController } from 'ionic-angular';
 
 import { DataService } from '../../services/data.service';
 import { Cd } from '../../models/cd';
@@ -14,7 +14,8 @@ export class CdListPage {
   cdsList: Cd[];
 
   constructor(private dataService: DataService,
-              public modalCtrl: ModalController) {}
+              public modalCtrl: ModalController,
+              public menuCtrl: MenuController) {}
 
   ionViewWillEnter() {
     this.cdsList = this.dataService.cdsList.slice();
@@ -23,5 +24,9 @@ export class CdListPage {
   onLoadCd(index: number) {
     let modal = this.modalCtrl.create(LendCdPage, {index: index});
     modal.present();
+  }
+
+  onToggleMenu() {
+    this.menuCtrl.open();
   }
 }
