@@ -8,6 +8,7 @@
 <ion-content padding>
   <ion-list>
     <button ion-item icon-start
+            [ngStyle]="{backgroundColor: cd.isLend ? '#ffb3b3' : ''}"
             *ngFor="let cd of cdsList; let i = index"
             (click)="onLoadCd(i)">
       <ion-icon name="disc"></ion-icon>

@@ -14,5 +14,23 @@
     <ion-card-content>
       <p>Auteur: {{ book.author }}</p>
     </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button full 
+                  color="primary"
+                  [disabled]="book.isLend">
+            Prêter
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button full
+                  color="secondary" 
+                  [disabled]="!book.isLend">
+            Rendre
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 </ion-content>

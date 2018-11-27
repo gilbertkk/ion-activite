@@ -6,17 +6,17 @@ export class DataService {
         {
             title: 'titre 1',
             author: 'auteur 1',
-            lendStatus: false
+            isLend: false
         },
         {
             title: 'titre 2',
             author: 'auteur 2',
-            lendStatus: true
+            isLend: true
         },
         {
             title: 'titre 3',
             author: 'auteur 3',
-            lendStatus: false
+            isLend: false
         },
     ];
 
@@ -24,12 +24,12 @@ export class DataService {
         {
             artist: 'artist 1',
             album: 'album 1',
-            lendStatus: false
+            isLend: false
         },
         {
             artist: 'artiste 2',
             album: 'album 2',
-            lendStatus: true
+            isLend: true
         }
     ];
 }

@@ -1,9 +1,9 @@
 export class Cd {
     constructor(public artist: string, 
                 public album: string,
-                public lendStatus: boolean) {
+                public isLend: boolean) {
         this.artist = artist;
         this.album = album;
-        this.lendStatus = lendStatus;
+        this.isLend = isLend;
     }
 }
