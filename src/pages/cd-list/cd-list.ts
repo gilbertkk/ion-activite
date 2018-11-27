@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 
 import { DataService } from '../../services/data.service';
 import { Cd } from '../../models/cd';
@@ -14,13 +14,14 @@ export class CdListPage {
   cdsList: Cd[];
 
   constructor(private dataService: DataService,
-              public navCtrl: NavController) {}
+              public modalCtrl: ModalController) {}
 
   ionViewWillEnter() {
     this.cdsList = this.dataService.cdsList.slice();
   }
 
   onLoadCd(index: number) {
-    this.navCtrl.push(LendCdPage, {index: index});
+    let modal = this.modalCtrl.create(LendCdPage, {index: index});
+    modal.present();
   }
 }

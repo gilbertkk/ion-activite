@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { Cd } from '../../../models/cd';
 import { DataService } from '../../../services/data.service';
 
@@ -10,10 +10,15 @@ import { DataService } from '../../../services/data.service';
 export class LendCdPage implements OnInit {
   cd: Cd;
   constructor(public navParams: NavParams,
-              private dataService: DataService) {}
+              private dataService: DataService,
+              public viewCtrl: ViewController) {}
 
   ngOnInit() {
     let index = this.navParams.get('index');
     this.cd = this.dataService.cdsList[index];
+  }
+
+  dismissModal() {
+    this.viewCtrl.dismiss();
   }
 }

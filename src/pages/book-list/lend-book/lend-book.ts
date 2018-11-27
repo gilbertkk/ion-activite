@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 
 import { DataService } from '../../../services/data.service';
 import { Book } from '../../../models/book';
@@ -12,10 +12,15 @@ export class LendBookPage implements OnInit {
   book: Book;
 
   constructor(public navParams: NavParams,
-              private dataService: DataService) {}
+              private dataService: DataService,
+              public viewCtrl: ViewController) {}
 
   ngOnInit() {
     let index = this.navParams.get('index');
     this.book = this.dataService.booksList[index];
+  }
+
+  dismissModal() {
+    this.viewCtrl.dismiss();
   }
 }
