@@ -10,6 +10,8 @@ import { BookListPage } from '../pages/book-list/book-list';
 import { CdListPage } from '../pages/cd-list/cd-list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DataService } from '../services/data.service';
+import { LendBookPage } from '../pages/book-list/lend-book/lend-book';
+import { LendCdPage } from '../pages/cd-list/lend-cd/lend-cd';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { DataService } from '../services/data.service';
     HomePage,
     BookListPage,
     CdListPage,
-    TabsPage
+    TabsPage,
+    LendBookPage,
+    LendCdPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { DataService } from '../services/data.service';
     HomePage,
     BookListPage,
     CdListPage,
-    TabsPage
+    TabsPage,
+    LendBookPage,
+    LendCdPage
   ],
   providers: [
     StatusBar,

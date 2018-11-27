@@ -8,7 +8,8 @@
 <ion-content padding>
   <ion-list>
     <button ion-item icon-start
-            *ngFor="let cd of cdsList">
+            *ngFor="let cd of cdsList; let i = index"
+            (click)="onLoadCd(i)">
       <ion-icon name="disc"></ion-icon>
       {{ cd.album }}
     </button>

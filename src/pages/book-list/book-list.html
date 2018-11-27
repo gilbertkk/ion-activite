@@ -8,7 +8,8 @@
 <ion-content padding>
   <ion-list>
     <button ion-item icon-start
-            *ngFor="let book of booksList">
+            *ngFor="let book of booksList; let i = index"
+            (click)="onLoadBook(i)">
       <ion-icon name="book"></ion-icon>
       {{ book.title }}
     </button>
