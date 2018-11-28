@@ -4,31 +4,46 @@ import { Cd } from "../models/cd";
 export class DataService {
     booksList: Book[] = [
         {
-            title: 'titre 1',
-            author: 'auteur 1',
+            title: 'Mastering TypeScript - Second Edition eBook',
+            author: 'Nathan Rozentals',
             isLend: false
         },
         {
-            title: 'titre 2',
-            author: 'auteur 2',
+            title: 'Mastering JavaScript',
+            author: 'Ben Fhala',
             isLend: true
         },
         {
-            title: 'titre 3',
-            author: 'auteur 3',
+            title: 'Angular 2 Cookbook',
+            author: 'Matt Frisbie',
             isLend: false
         },
     ];
 
     cdsList: Cd[] = [
         {
-            artist: 'artist 1',
-            album: 'album 1',
+            artist: 'Daft Punk',
+            album: 'Random Access Memories',
             isLend: false
         },
         {
-            artist: 'artiste 2',
-            album: 'album 2',
+            artist: 'David Guetta',
+            album: 'Nothing but the Beat',
+            isLend: false
+        },
+        {
+            artist: 'David Guetta',
+            album: 'Seven "7"',
+            isLend: true
+        },
+        {
+            artist: 'Avicii',
+            album: 'Stories',
+            isLend: false
+        },
+        {
+            artist: 'Daft Punk',
+            album: 'Human After All',
             isLend: true
         }
     ];
