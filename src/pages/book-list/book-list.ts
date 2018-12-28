@@ -11,9 +11,10 @@ import { LendBookPage } from './lend-book/lend-book';
 })
 export class BookListPage {
   booksList: Book[];
+
   constructor(private dataService: DataService,
-              public modalCtrl: ModalController,
-              public menuCtrl: MenuController) {}
+              private modalCtrl: ModalController,
+              private menuCtrl: MenuController) {}
 
   ionViewWillEnter() {
     this.booksList = this.dataService.booksList.slice();
