@@ -6,14 +6,31 @@
     </ion-header>
     <ion-content>
         <ion-list>
-            <button ion-item icon-start (click)="onNavigate(rootPage)">
+            <button ion-item icon-start *ngIf="isAuth"
+                    (click)="onNavigate(rootPage)">
                 <ion-icon name="book"></ion-icon>
                 Livres
             </button>
-            <button ion-item icon-start (click)="onNavigate(settingsPage)">
+            <button ion-item icon-start *ngIf="isAuth"
+                    (click)="onNavigate(settingsPage)">
                 <ion-icon name="settings"></ion-icon>
                 Réglages
             </button>
+            <button ion-item icon-start *ngIf="!isAuth"
+                    (click)="onNavigate(authPage, {mode: 'new'})">
+                <ion-icon name="person-add"></ion-icon>
+                Nouvel utilisateur
+            </button>
+            <button ion-item icon-start *ngIf="!isAuth"
+                    (click)="onNavigate(authPage, {mode: 'connect'})">
+                <ion-icon name="person"></ion-icon>
+                Connexion
+            </button>
+            <button ion-item icon-start *ngIf="isAuth"
+                    (click)="onDisconnect()">
+                    <ion-icon name="exit"></ion-icon>
+                    Déconnexion
+                  </button>
         </ion-list>
     </ion-content>
 </ion-menu>

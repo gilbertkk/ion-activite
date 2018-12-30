@@ -1,5 +1,4 @@
 import * as firebase from 'firebase';
-import { resolveDefinition } from '../../node_modules/@angular/core/src/view/util';
 
 export class AuthService { 
     isAuth = false;
@@ -32,7 +31,7 @@ export class AuthService {
             .then((user) => {
                 resolve(user);
             })
-            .then((error) => {
+            .catch((error) => {
                 reject(error);
             });
         });

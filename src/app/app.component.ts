@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
+import { AuthPage } from '../pages/auth/auth-page';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,6 +15,8 @@ import { SettingsPage } from '../pages/settings/settings';
 export class MyApp {
   rootPage:any = TabsPage;
   settingsPage: any = SettingsPage;
+  authPage: any = AuthPage;
+  isAuth = false;
   @ViewChild('content') content: NavController;
 
   constructor(platform: Platform, 
@@ -36,12 +39,28 @@ export class MyApp {
         messagingSenderId: "141654686161"
       };
       firebase.initializeApp(config);
+      firebase.auth().onAuthStateChanged(
+        (user) => {
+          if (user) {
+            this.isAuth = true;
+            this.content.setRoot(TabsPage);
+          } else {
+            this.isAuth = false;
+            this.content.setRoot(AuthPage, {mode: 'connect'});
+          }
+        }
+      );
 
     });
   }
 
-  onNavigate(page: any) {
-    this.content.setRoot(page);
+  onNavigate(page: any, data?: {}) {
+    this.content.setRoot(page, data ? data : null);
+    this.menuCtrl.close();
+  }
+
+  onDisconnect() {
+    firebase.auth().signOut();
     this.menuCtrl.close();
   }
 }
