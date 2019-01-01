@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver,
+import { Component, OnInit, ComponentFactoryResolver, OnDestroy,
         ViewChild } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   selector: 'page-lend-book',
   templateUrl: 'lend-book.html',
 })
-export class LendBookPage implements OnInit {
+export class LendBookPage implements OnInit, OnDestroy {
   book: Book;
   index: number;
   usernameFormSubscription: Subscription;
@@ -30,6 +30,7 @@ export class LendBookPage implements OnInit {
     this.usernameFormSubscription = this.dataService.usernameFormSubject
       .subscribe(() => {
         this.unloadComponent();
+        this.dismissModal();
       });
   }
 
@@ -63,6 +64,10 @@ export class LendBookPage implements OnInit {
   unloadComponent() {
     let viewContainerRef = this.adHost.viewContainerRef;
     viewContainerRef.clear();
+  }  
+
+  ngOnDestroy() {
+    this.usernameFormSubscription.unsubscribe();
   }
 
 }

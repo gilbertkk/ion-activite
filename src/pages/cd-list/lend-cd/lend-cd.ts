@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver,
+import { Component, OnInit, ComponentFactoryResolver, OnDestroy,
           ViewChild } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { Cd } from '../../../models/cd';
@@ -28,6 +28,7 @@ export class LendCdPage implements OnInit {
     this.usernameFormSubscription = this.dataService.usernameFormSubject
       .subscribe(() => {
         this.unloadComponent();
+        this.dismissModal();
       });
   }
 
@@ -62,5 +63,9 @@ export class LendCdPage implements OnInit {
   unloadComponent() {
     let viewContainerRef = this.adHost.viewContainerRef;
     viewContainerRef.clear();
+  }
+
+  ngOnDestroy() {
+    this.usernameFormSubscription.unsubscribe();
   }
 }
