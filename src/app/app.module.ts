@@ -15,6 +15,8 @@ import { LendCdPage } from '../pages/cd-list/lend-cd/lend-cd';
 import { SettingsPage } from '../pages/settings/settings';
 import { AuthService } from '../services/auth.service';
 import { AuthPage } from '../pages/auth/auth-page';
+import { UsernameForm } from '../components/username-form/username-form';
+import { AdDirective } from '../components/ad.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AuthPage } from '../pages/auth/auth-page';
     LendBookPage,
     LendCdPage,
     SettingsPage,
-    AuthPage
+    AuthPage,
+    UsernameForm,
+    AdDirective
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { AuthPage } from '../pages/auth/auth-page';
     LendBookPage,
     LendCdPage,
     SettingsPage, 
-    AuthPage
+    AuthPage,
+    UsernameForm
   ],
   providers: [
     StatusBar,

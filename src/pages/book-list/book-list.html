@@ -18,6 +18,7 @@
             (click)="onLoadBook(i)">
       <ion-icon name="book"></ion-icon>
       {{ book.title }}
+      <p *ngIf="book.isLend">Emprunté par: <strong>{{ book.lendname }}</strong></p>
     </button>
   </ion-list>
 </ion-content>

@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons>
-      <button ion-button clear (click)="dismissModal()">Fermer</button>
+    <ion-buttons end>
+      <button ion-button clear  (click)="dismissModal()">Fermer</button>
     </ion-buttons>
     <ion-title>Prêter un livre</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding (dismissUsernameForm)="unloadComponent()">
   <ion-card>
     <ion-card-header>{{ book.title }}</ion-card-header>
     <ion-card-content>
@@ -20,7 +20,7 @@
           <button ion-button full 
                   color="primary"
                   [disabled]="book.isLend"
-                  (click)="onToggleLendBook()">
+                  (click)="onToggleLendBook(uf)">
             Prêter
           </button>
         </ion-col>
@@ -28,11 +28,12 @@
           <button ion-button full
                   color="secondary" 
                   [disabled]="!book.isLend"
-                  (click)="onToggleLendBook()">
+                  (click)="onBringbackBook()">
             Rendre
           </button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
+  <ng-template ad-host></ng-template>
 </ion-content>

@@ -1,22 +1,28 @@
 import { Book } from "../models/book";
 import { Cd } from "../models/cd";
+import { Subject } from 'rxjs';
 
 export class DataService {
+    usernameFormSubject = new Subject<any>();
+
     booksList: Book[] = [
         {
             title: 'Mastering TypeScript - Second Edition eBook',
             author: 'Nathan Rozentals',
-            isLend: false
+            isLend: false,
+            lendname: null
         },
         {
             title: 'Mastering JavaScript',
             author: 'Ben Fhala',
-            isLend: true
+            isLend: true,
+            lendname: 'john'
         },
         {
             title: 'Angular 2 Cookbook',
             author: 'Matt Frisbie',
-            isLend: false
+            isLend: false,
+            lendname: null
         },
     ];
 
@@ -24,27 +30,32 @@ export class DataService {
         {
             artist: 'Daft Punk',
             album: 'Random Access Memories',
-            isLend: false
+            isLend: false,
+            lendname: null
         },
         {
             artist: 'David Guetta',
             album: 'Nothing but the Beat',
-            isLend: false
+            isLend: false, 
+            lendname: null
         },
         {
             artist: 'David Guetta',
             album: 'Seven "7"',
-            isLend: true
+            isLend: true,
+            lendname: 'Laura'
         },
         {
             artist: 'Avicii',
             album: 'Stories',
-            isLend: false
+            isLend: false,
+            lendname: null
         },
         {
             artist: 'Daft Punk',
             album: 'Human After All',
-            isLend: true
+            isLend: true,
+            lendname: 'Lisa'
         }
     ];
 
@@ -54,5 +65,19 @@ export class DataService {
 
     toggleLendCd(index: number) {
         this.cdsList[index].isLend = !this.cdsList[index].isLend;
+    }
+
+    emitUsernameForm() {
+        this.usernameFormSubject.next();
+    }
+
+    setLendname(index: number, lendname: string, listname: string) {
+        if (listname === 'books') {
+            this.booksList[index].lendname = lendname;
+        }
+
+        if (listname === 'cds') {
+            this.cdsList[index].lendname = lendname;
+        } 
     }
 }
