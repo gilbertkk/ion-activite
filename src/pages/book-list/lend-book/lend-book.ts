@@ -1,5 +1,5 @@
 import { Component, OnInit, ComponentFactoryResolver,
-        ViewChild} from '@angular/core';
+        ViewChild } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 
 import { DataService } from '../../../services/data.service';
@@ -54,7 +54,7 @@ export class LendBookPage implements OnInit {
     let viewContainerRef = this.adHost.viewContainerRef;
     viewContainerRef.clear();
 
-    let data = {title: 'livre',  index: this.index}
+    let data = {title: 'livre',  index: this.index, targetList: 'books'}
 
     let componentRef = viewContainerRef.createComponent(componentFactory);
     (<UsernameForm>componentRef.instance).data = data;
@@ -63,7 +63,6 @@ export class LendBookPage implements OnInit {
   unloadComponent() {
     let viewContainerRef = this.adHost.viewContainerRef;
     viewContainerRef.clear();
-    console.log('unload');
   }
 
 }

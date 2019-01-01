@@ -26,8 +26,15 @@ export class UsernameForm implements OnInit {
 
   onSubmitForm() {
     let lendname = this.lendnameForm.get('lendname').value;
-    this.dataService.toggleLendBook(this.data.index)
-    this.dataService.setLendname(this.data.index, lendname, 'books');
+    if (this.data.targetList === 'books') {
+      this.dataService.toggleLendBook(this.data.index);
+    } 
+
+    if (this.data.targetList === 'cds') {
+      this.dataService.toggleLendCd(this.data.index);
+    } 
+    
+    this.dataService.setLendname(this.data.index, lendname, this.data.targetList);
     this.dataService.emitUsernameForm();
   }
 }

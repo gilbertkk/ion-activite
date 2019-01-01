@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons>
+    <ion-buttons end>
       <button ion-button clear (click)="dismissModal()">Fermer</button>
     </ion-buttons>
     <ion-title>Prêter un CD</ion-title>
@@ -28,11 +28,12 @@
           <button ion-button full
                   color="secondary"
                   [disabled]="!cd.isLend"
-                  (click)="onToggleLendCd()">
+                  (click)="onBringBackCd()">
             Rendre
           </button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
+  <ng-template ad-host></ng-template>
 </ion-content>

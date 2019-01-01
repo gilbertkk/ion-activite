@@ -18,6 +18,7 @@
             (click)="onLoadCd(i)">
       <ion-icon name="disc" [ngStyle]="{padding: '5px'}"></ion-icon>
       {{ cd.album }}
+      <p *ngIf="cd.isLend">Emprunté par: <strong>{{ cd.lendname }}</strong></p>
     </button>
   </ion-list>
 </ion-content>
