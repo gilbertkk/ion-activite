@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavParams, NavController, LoadingController,
-  ToastController } from 'ionic-angular';
+import { MenuController, NavParams, NavController, LoadingController} from 'ionic-angular';
 import {FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { TabsPage } from '../tabs/tabs'; 
@@ -21,8 +20,7 @@ export class AuthPage implements OnInit {
                 private formBuilder: FormBuilder,
                 private authService: AuthService,
                 private navCtrl: NavController,
-                private LoadingCtrl: LoadingController,
-                private toastCtrl: ToastController) {}
+                private LoadingCtrl: LoadingController) {}
 
     ngOnInit() {
         this.mode = this.navParams.get('mode');
