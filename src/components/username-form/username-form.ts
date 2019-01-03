@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 
@@ -35,6 +35,7 @@ export class UsernameForm implements OnInit {
     } 
     
     this.dataService.setLendname(this.data.index, lendname, this.data.targetList);
+    this.dataService.saveListToDevice().then(()=>{}, (error)=>{});
     this.dataService.emitUsernameForm();
   }
 }

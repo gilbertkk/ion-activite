@@ -30,7 +30,7 @@ export class MyApp {
       splashScreen.hide();
 
       // Initialize Firebase
-      var config = {
+      let config = {
         apiKey: "AIzaSyAZnX9hlyHm5o6N8YhaoJkzRfWVO76l5pQ",
         authDomain: "activite-92195.firebaseapp.com",
         databaseURL: "https://activite-92195.firebaseio.com",
@@ -38,9 +38,11 @@ export class MyApp {
         storageBucket: "activite-92195.appspot.com",
         messagingSenderId: "141654686161"
       };
+
       firebase.initializeApp(config);
+
       firebase.auth().onAuthStateChanged(
-        (user) => {
+        (user)=> {
           if (user) {
             this.isAuth = true;
             this.content.setRoot(TabsPage);
@@ -50,7 +52,6 @@ export class MyApp {
           }
         }
       );
-
     });
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavParams, NavController } from 'ionic-angular';
+import { MenuController, NavParams, NavController, LoadingController,
+  ToastController } from 'ionic-angular';
 import {FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { TabsPage } from '../tabs/tabs'; 
@@ -13,12 +14,15 @@ export class AuthPage implements OnInit {
     mode: string;
     authForm: FormGroup;
     errorMessage: string;
+    showError = false;
 
     constructor(private menuCtr: MenuController,
                 private navParams: NavParams,
                 private formBuilder: FormBuilder,
                 private authService: AuthService,
-                private navCtrl: NavController) {}
+                private navCtrl: NavController,
+                private LoadingCtrl: LoadingController,
+                private toastCtrl: ToastController) {}
 
     ngOnInit() {
         this.mode = this.navParams.get('mode');
@@ -37,26 +41,38 @@ export class AuthPage implements OnInit {
     }
 
     onSubmitForm() {
-        const email = this.authForm.get('email').value;
-        const password = this.authForm.get('password').value;
-        if (this.mode === 'new') {
-          this.authService.signUpUser(email, password).then(
-            () => {
-              this.navCtrl.setRoot(TabsPage);
-            },
-            (error) => {
-              this.errorMessage = error.message;
-            }
-          );
-        } else if (this.mode === 'connect') {
-          this.authService.signInUser(email, password).then(
-            () => {
-              this.navCtrl.setRoot(TabsPage);
-            },
-            (error) => {
-              this.errorMessage = error.message;
-            }
-          );
-        }
+      const email = this.authForm.get('email').value;
+      const password = this.authForm.get('password').value;
+      let loading = this.LoadingCtrl.create({
+        content: 'Authentification en cours...'
+      });
+      loading.present();
+      if (this.mode === 'new') {
+        this.authService.signUpUser(email, password).then(
+          () => {
+            this.authService.isAuth = true;
+            this.navCtrl.setRoot(TabsPage);
+            loading.dismiss();
+          },
+          (error) => {
+            this.errorMessage = error.message;
+            loading.dismiss();
+          }
+        );
+      } else if (this.mode === 'connect') {
+        this.authService.signInUser(email, password).then(
+          () => {
+            loading.dismiss();
+            this.authService.isAuth = true;
+            this.navCtrl.setRoot(TabsPage);
+            
+          },
+          (error) => {
+            loading.dismiss();
+            this.errorMessage = error.message;
+            
+          }
+        );
       }
+    }
 }

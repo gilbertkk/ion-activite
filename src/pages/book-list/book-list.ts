@@ -4,6 +4,7 @@ import { ModalController, MenuController } from 'ionic-angular';
 import { DataService } from '../../services/data.service';
 import { Book } from '../../models/book';
 import { LendBookPage } from './lend-book/lend-book';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'page-book-list',
@@ -14,11 +15,15 @@ export class BookListPage {
 
   constructor(private dataService: DataService,
               private modalCtrl: ModalController,
-              private menuCtrl: MenuController) {}
+              private menuCtrl: MenuController, 
+              private authService: AuthService) {}
+
 
   ionViewWillEnter() {
-    this.booksList = this.dataService.booksList.slice();
+      this.booksList = this.dataService.booksList.slice();
   }
+
+
 
   onLoadBook(index: number) {
     let modal = this.modalCtrl.create(LendBookPage, {index: index})

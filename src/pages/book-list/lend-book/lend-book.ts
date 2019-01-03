@@ -45,6 +45,7 @@ export class LendBookPage implements OnInit, OnDestroy {
   onBringbackBook() {
     this.dataService.toggleLendBook(this.index);
     this.dataService.booksList[this.index].lendname = null;
+    this.dataService.saveListToDevice().then(()=>{}, ()=>{});
     this.book.isLend = this.dataService.booksList[this.index].isLend;
   }
 

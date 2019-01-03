@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   selector: 'page-lend-cd',
   templateUrl: 'lend-cd.html',
 })
-export class LendCdPage implements OnInit {
+export class LendCdPage implements OnInit, OnDestroy {
   cd: Cd;
   index: number;
   usernameFormSubscription: Subscription;
@@ -43,6 +43,7 @@ export class LendCdPage implements OnInit {
   onBringBackCd() {
     this.dataService.toggleLendCd(this.index);
     this.dataService.cdsList[this.index].lendname = null;
+    this.dataService.saveListToDevice().then(()=>{}, ()=>{});
     // Met à jour le status d'emprunt dans la page actuelle
     this.cd.isLend = this.dataService.cdsList[this.index].isLend;
   }

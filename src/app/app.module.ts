@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BookListPage } from '../pages/book-list/book-list';
@@ -17,6 +18,7 @@ import { AuthService } from '../services/auth.service';
 import { AuthPage } from '../pages/auth/auth-page';
 import { UsernameForm } from '../components/username-form/username-form';
 import { AdDirective } from '../components/ad.directive';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { AdDirective } from '../components/ad.directive';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataService,
-    AuthService
+    AuthService,
+    NativeStorage
   ]
 })
 export class AppModule {}

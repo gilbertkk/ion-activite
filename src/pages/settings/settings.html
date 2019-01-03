@@ -1,17 +1,22 @@
 <ion-header>
-  <ion-navbar>
-    <ion-buttons start>
-      <button ion-button icon-only (click)="onToggleMenu()">
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-buttons>
+  <ion-toolbar>
     <ion-title>Réglages</ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="onToggleMenu()">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-  <p>Ceci est la page des Réglages, en attente de nouvelles idées pour
-    son contenu!
-  </p>
+  <ion-list>
+    <button ion-button full
+            (click)="onSaveToBackend()">Sauvegarder dans le serveur</button>
+  </ion-list>
+  <ion-list>
+    <button ion-button full
+            (click)="onRestoreFromBackend()">Restorer à partir du serveur</button>
+  </ion-list>
 </ion-content>

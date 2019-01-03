@@ -1,16 +1,11 @@
 import * as firebase from 'firebase';
+import { Injectable } from '../../node_modules/@angular/core';
 
+@Injectable()
 export class AuthService { 
     isAuth = false;
 
     constructor() {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                this.isAuth = true;
-            } else {
-                this.isAuth = false;
-            }
-        });
     }
 
     signUpUser(email: string, password: string) {
@@ -36,7 +31,6 @@ export class AuthService {
             });
         });
     }
-
     signOut() {
         firebase.auth().signOut();
     }
